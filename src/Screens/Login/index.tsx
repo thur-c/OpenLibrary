@@ -8,7 +8,7 @@ export default function Login(){
 			<Text style={{color: '#fff', fontSize: 30, fontWeight: 'bold'}}>LOGIN</Text>
 			<InputView>
 				<Input keyboardType='email-address' autoComplete='email' title='Email:' label='user@user.com'/>
-				<Input isSecure title='Senha:' label='user123321'/>
+				<Input autoComplete='new-password' isSecure title='Senha:' label='user123321'/>
 			</InputView>
 			<SubmitButton>
 				<Text style={{color: '#fff', fontSize: 25, fontWeight: 'bold'}}>Enviar</Text>

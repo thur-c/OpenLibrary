@@ -11,7 +11,7 @@ interface InputTypes {
 export default function Input({label, title, isSecure, autoComplete, keyboardType}: InputTypes){
 	return(
 		<MainContainer>
-			<Text style={{color: '#fff', fontSize: 18}}>{title}</Text>
+			<Text style={{color: '#fff', fontSize: 18, fontWeight: '500'}}>{title}</Text>
 
 			<InputContainer
 				autoComplete={autoComplete}
