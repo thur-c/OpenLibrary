@@ -22,7 +22,7 @@
     "@types/styled-components-react-native": "^5.2.5",
     "@typescript-eslint/eslint-plugin": "^7.13.0",
     "@typescript-eslint/parser": "^7.13.0",
-    "eslint": "^9.4.0",
+    "eslint": "^8.57.0",
     "eslint-plugin-react": "^7.34.2",
     "typescript": "^5.1.3"
   },
