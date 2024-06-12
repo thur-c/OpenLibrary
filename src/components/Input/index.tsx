@@ -14,6 +14,7 @@ export default function Input({label, title, isSecure, autoComplete, keyboardTyp
 			<Text style={{color: '#fff', fontSize: 18, fontWeight: '500'}}>{title}</Text>
 
 			<InputContainer
+				showSoftInputOnFocus
 				autoComplete={autoComplete}
 				secureTextEntry={isSecure}
 				placeholderTextColor='#fff5'

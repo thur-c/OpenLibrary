@@ -10,6 +10,7 @@ export const MainContainer = styled.View`
 export const InputView = styled.View`
   align-items: center;
   justify-content: center;
+  width: 100%;
 `;
 
 export const SubmitButton = styled.TouchableOpacity`
