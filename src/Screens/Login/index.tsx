@@ -1,25 +1,50 @@
-import { Text } from 'react-native';
+import { BackHandler, Text } from 'react-native';
 import Input from '../../components/Input';
-import { InputView, MainContainer, SubmitButton } from './styles';
+import { FormView, MainContainer, SubmitButton, ViewInputs } from './styles';
+import { useEffect, useState } from 'react';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { RootStackParamList } from '../../@types/RootStackParamList';
 
-export default function Login({navigation}){
+export default function Login(){
+	const [userName, setUserName] = useState('');
+	const [password, setPassword] = useState('');
+	const [error, setError] = useState(false);
+	const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+
+	useEffect(() => {
+		BackHandler.addEventListener('hardwareBackPress', () => {
+			BackHandler.exitApp();
+			return true;
+		});
+	}, []);
 
 	function handlePressSubmitButton(){
-		navigation.navigate('Home');
+		if (!userName || userName === '' || userName != 'admin') {
+			setError(true);
+		}
+		else if (!password || password === '' || password!= 'admin123') {
+			setError(true);
+		}
+		else {
+			setError(false);
+			navigation.navigate('Home');
+		}
 	}
 	return(
 		<MainContainer>
 			<Text style={{color: '#fff', fontSize: 40, fontWeight: 'bold', textAlign: 'center'}}>LOGIN</Text>
-			<InputView>
+			<FormView>
 
-				<Input keyboardType='name' autoComplete='email' title='Email:' label='user_name'/>
-				<Input autoComplete='new-password' isSecure title='Senha:' label='your_pwd'/>
+				<ViewInputs>
+					<Input error={error} errorMessage={'Usuário ou senha inválidos!'} onChangeText={(user) => setUserName(user.trim())} autoComplete='username' title='Nome de usuário:' label='username01'/>
+					<Input error={error} errorMessage={'Usuário ou senha inválidos!'} onChangeText={(pass) => setPassword(pass)} autoComplete='new-password' isSecure title='Senha:' label='user123'/>
+				</ViewInputs>
 
 				<SubmitButton onPress={() => handlePressSubmitButton()}>
 					<Text style={{color: '#fff', fontSize: 25, fontWeight: 'bold' }}>Enviar</Text>
 				</SubmitButton>
 
-			</InputView>
+			</FormView>
 		</MainContainer>
 	);
 }
