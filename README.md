@@ -19,7 +19,7 @@ yarn
 Or
 
 ```sh
-yarn install
+npm install
 ```
 
 ## Usage
