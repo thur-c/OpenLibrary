@@ -1,5 +1,7 @@
-import { Text } from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
 import { MainContainer,  InputContainer, TextError } from './styles';
+import Entypo from '@expo/vector-icons/Entypo';
+import { useState } from 'react';
 
 interface InputTypes {
   label: string;
@@ -12,6 +14,7 @@ interface InputTypes {
   value?: string;
   error?: boolean;
   errorMessage?: string;
+  showEye?: boolean;
 }
 export default function Input({
 	label,
@@ -23,29 +26,43 @@ export default function Input({
 	onChangeText,
 	value,
 	error,
-	errorMessage
+	errorMessage,
+	showEye
 }: InputTypes){
+
+	const [secureText, setSecureText] = useState(isSecure);
+
+	function toggleSecureText() {
+		setSecureText(!secureText);
+	}
+
 	return(
 		<MainContainer>
 			{title.length > 0 &&
         <Text style={{color: '#fff', fontSize: 18, fontWeight: '500'}}>{title}</Text>
 			}
+			<View style={{alignItems: 'center', justifyContent: 'center'}}>
+				{showEye &&
+					<TouchableOpacity onPress={() => toggleSecureText()} style={{position: 'absolute', right: 15, zIndex: 1}}>
+						<Entypo name={secureText ? 'eye' : 'eye-with-line'} size={22} color="#fff" />
+					</TouchableOpacity>
+				}
 
-			<InputContainer
+				<InputContainer
+					showSoftInputOnFocus
+					autoComplete={autoComplete}
+					secureTextEntry={secureText}
+					placeholderTextColor='#fff5'
+					placeholder={label}
+					keyboardType={keyboardType}
+					enterKeyHint='send'
+					color={error === true ? '#f00' :  color}
+					onChangeText={onChangeText}
+					value={value}
+				/>
+			</View>
 
-				showSoftInputOnFocus
-				autoComplete={autoComplete}
-				secureTextEntry={isSecure}
-				placeholderTextColor='#fff5'
-				placeholder={label}
-				keyboardType={keyboardType}
-				enterKeyHint='send'
-				color={error === true ? '#f00' :  color}
-				onChangeText={onChangeText}
-				value={value}
-			/>
 			{error &&
-
         <TextError>{errorMessage}</TextError>
 			}
 

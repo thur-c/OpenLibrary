@@ -3,18 +3,21 @@ import { Image, Modal, ScrollView, Text } from 'react-native';
 import { MainContainer, TextInfo, ViewTextInfo } from './styles';
 import { Doc } from '../../@types/Doc';
 
-interface ModalProps{
-    isModalVisible: boolean;
-    onClose: () => void;
-    data: Doc;
+interface ModalProps {
+	isModalVisible: boolean;
+	onClose: () => void;
+	data: Doc;
 }
-export default function ModalBookInfo({isModalVisible, onClose, data}: ModalProps){
+
+export default function ModalBookInfo({ isModalVisible, onClose, data }: ModalProps) {
+
+	const emptyValue = '[Não encontrado]';
 
 	function closeModal() {
 		onClose();
 	}
 
-	return(
+	return (
 		<Modal
 			visible={isModalVisible}
 			transparent
@@ -23,9 +26,9 @@ export default function ModalBookInfo({isModalVisible, onClose, data}: ModalProp
 		>
 
 			<MainContainer>
-				<ScrollView contentContainerStyle={{ gap: 15, justifyContent: 'center', alignItems: 'center'}}>
-					<Text style={{color: '#fff', fontSize: 18, textAlign: 'center', fontWeight: 'bold'}}>
-						{data.title}
+				<ScrollView contentContainerStyle={{ gap: 15, justifyContent: 'center', alignItems: 'center' }}>
+					<Text style={{ color: '#fff', fontSize: 18, textAlign: 'center', fontWeight: 'bold' }}>
+						{data.title || emptyValue}
 					</Text>
 					{data.cover_i ? (
 						<Image
@@ -44,53 +47,36 @@ export default function ModalBookInfo({isModalVisible, onClose, data}: ModalProp
 							/>
 						)}
 					<ViewTextInfo>
-						{data.number_of_pages_median &&
-						<TextInfo style={{fontWeight: 'bold'}}>{data.number_of_pages_median} Páginas</TextInfo>
-						}
-						{data.author_name &&
+						<TextInfo style={{ fontWeight: 'bold' }}>Número de páginas: {data.number_of_pages_median ? data.number_of_pages_median : emptyValue}</TextInfo>
 						<TextInfo>
-							<Text style={{fontWeight: 'bold'}}>Autor: </Text>
-							{data.author_name?.join(', ')}
+							<Text style={{ fontWeight: 'bold' }}>Autor: </Text>
+							{data.author_name?.join(', ') || emptyValue}
 						</TextInfo>
-						}
 
-						{data.publisher &&
 						<TextInfo >
-							<Text style={{fontWeight: 'bold'}}>Publicado por: </Text>
-							{data.publisher?.join(', ')}
+							<Text style={{ fontWeight: 'bold' }}>Publicado por: </Text>
+							{data.publisher?.join(', ') || emptyValue}
 						</TextInfo>
-						}
 
-						{data.first_publish_year &&
 						<TextInfo>
-							<Text style={{fontWeight: 'bold'}}>Ano da primeira publicação: </Text>
-							{data.first_publish_year}
+							<Text style={{ fontWeight: 'bold' }}>Ano da primeira publicação: </Text>
+							{data.first_publish_year || emptyValue}
 						</TextInfo>
-						}
 
-						{data.subject &&
 						<TextInfo >
-							<Text style={{fontWeight: 'bold'}}>Gênero: </Text>
-							{data.subject?.join(', ')}
+							<Text style={{ fontWeight: 'bold' }}>Gênero: </Text>
+							{data.subject?.join(', ') || emptyValue}
 						</TextInfo>
-						}
 
-						{data.isbn &&
 						<TextInfo >
-							<Text style={{fontWeight: 'bold'}}>Isbn 10: </Text>
-							{data.isbn?.join(', ')}
+							<Text style={{ fontWeight: 'bold' }}>Isbn 10: </Text>
+							{data.isbn?.join(', ') || emptyValue}
 						</TextInfo>
-						}
 
-						{data.language &&
-            <TextInfo>
-            	<Text style={{fontWeight: 'bold'}}>Idioma: </Text>
-            	{data.language?.join(', ')}
-            </TextInfo>
-						}
-
-
-
+						<TextInfo>
+							<Text style={{ fontWeight: 'bold' }}>Idioma: </Text>
+							{data.language?.join(', ') || emptyValue}
+						</TextInfo>
 					</ViewTextInfo>
 				</ScrollView>
 			</MainContainer>

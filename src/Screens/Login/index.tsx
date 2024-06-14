@@ -37,8 +37,10 @@ export default function Login(){
 
 				<ViewInputs>
 					<Input error={error} errorMessage={'Usuário ou senha inválidos!'} onChangeText={(user) => setUserName(user.trim())} autoComplete='username' title='Nome de usuário:' label='username01'/>
-					<Input error={error} errorMessage={'Usuário ou senha inválidos!'} onChangeText={(pass) => setPassword(pass)} autoComplete='new-password' isSecure title='Senha:' label='user123'/>
+					<Input showEye={true} error={error} errorMessage={'Usuário ou senha inválidos!'} onChangeText={(pass) => setPassword(pass)} autoComplete='new-password' isSecure title='Senha:' label='user123'/>
+
 				</ViewInputs>
+
 
 				<SubmitButton onPress={() => handlePressSubmitButton()}>
 					<Text style={{color: '#fff', fontSize: 25, fontWeight: 'bold' }}>Enviar</Text>
