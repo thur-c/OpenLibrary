@@ -3,6 +3,7 @@ import Login from './src/Screens/Login';
 import Home from './src/Screens/Home';
 import { NavigationContainer } from '@react-navigation/native';
 import { RootStackParamList } from './src/@types/RootStackParamList';
+import { StatusBar } from 'react-native';
 
 
 export default function App() {
@@ -18,6 +19,7 @@ export default function App() {
 	}
 	return (
 		<NavigationContainer>
+			<StatusBar/>
 			<MyStack/>
 		</NavigationContainer>
 	);

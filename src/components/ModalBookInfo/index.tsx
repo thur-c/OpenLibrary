@@ -1,7 +1,8 @@
 /* eslint-disable no-mixed-spaces-and-tabs */
 import { Image, Modal, ScrollView, Text } from 'react-native';
-import { MainContainer, TextInfo, ViewTextInfo } from './styles';
+import { CloseButton, MainContainer, TextInfo, ViewTextInfo } from './styles';
 import { Doc } from '../../@types/Doc';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
 interface ModalProps {
 	isModalVisible: boolean;
@@ -26,6 +27,9 @@ export default function ModalBookInfo({ isModalVisible, onClose, data }: ModalPr
 		>
 
 			<MainContainer>
+				<CloseButton onPress={() => closeModal()}>
+					<MaterialIcons name="close" size={24} color="black" />
+				</CloseButton>
 				<ScrollView contentContainerStyle={{ gap: 15, justifyContent: 'center', alignItems: 'center' }}>
 					<Text style={{ color: '#fff', fontSize: 18, textAlign: 'center', fontWeight: 'bold' }}>
 						{data.title || emptyValue}

@@ -116,9 +116,7 @@ export default function Home() {
 					<MaterialIcons name="logout" size={24} color="black" />
 				</CloseButton>
 
-				<Text style={{ color: '#fff', fontSize: 20, fontWeight: 'bold', textAlign: 'center', marginTop: 25 }}>
-        Bem vindo a sua biblioteca!
-				</Text>
+
 				<ViewConsulta>
 
 					<Text style={{ color: '#fff', fontSize: 20, fontWeight: 'bold', textAlign: 'center', marginTop: 10 }}>

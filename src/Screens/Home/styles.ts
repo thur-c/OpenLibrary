@@ -13,6 +13,7 @@ export const ViewConsulta = styled.View`
   width: 100%;
   border-radius: 16px;
   padding: 10px;
+  margin-top: 10px;
 `;
 
 export const ViewTypes = styled.View`
@@ -49,8 +50,9 @@ export const TextButton = styled.Text<TextProps>`
 `;
 
 export const SubmitButton = styled.TouchableOpacity`
-  min-width: 70px;
-  height: 50px;
+  max-width: 60px;
+  flex-grow: 1;
+  height: 40px;
   background-color: #16a34a;
   border-radius: 5px;
   justify-content: center;
@@ -83,12 +85,13 @@ export const BookTextInfo = styled.Text`
 
 export const CloseButton = styled.TouchableOpacity`
   background-color: #fff;
-  height: 40px;
-  width: 40px;
+  height: 35px;
+  width: 35px;
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 25px;
-  right: 20px;
+  top: 10px;
+  right: 10px;
   border-radius: 15px;
+  z-index: 1;
 `;
