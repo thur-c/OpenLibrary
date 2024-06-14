@@ -25,7 +25,7 @@ npm install
 ## Usage
 
 ```sh
-yarn start
+expo start
 ```
 
 ## Author
