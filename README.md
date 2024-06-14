@@ -26,6 +26,8 @@ npm install
 
 ```sh
 expo start
+yarn start
+npm run start
 ```
 
 ## Author
